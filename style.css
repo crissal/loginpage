@@ -1,1 +1,36 @@
+html {
+  height: 100%;
+}
 
+body {
+  height: 100%;
+  font-weight: bold;
+  margin: 0;
+  justify-items: center;
+  align-items: center;
+  background-color:gray;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: grid;
+}
+
+div{
+  text-align:center;
+}
+
+#mainPlaceHolder {
+  justify-items: center;
+  align-items: center;
+  background-color: beige;
+  border-radius: 3px;
+  width: 30%;
+  height: 50%;
+  display: grid;
+
+}
+
+#divLogin {
+  align-self: center;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}

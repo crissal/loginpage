@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inloggningssida</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="./util.js"></script>
-    <script src="./home.js"></script>
+  <main id="mainPlaceHolder">
+    <div id="divLogin">
+      <input type="text" id="usernameInput" placeholder="Användarnamn">
+      <input type="password" id="passwordInput" placeholder="Lösenord">
+      <button id="loginButton">Logga in</button>
+    </div>
+
+    <div id="divLoginFailed">
+      <p>Kolla om du använde rätt användarnamn och lösenord.</p>
+      <button id="retryButton">Prova igen</button>
+    </div>
+
+    <div id="divLoginSuccess">
+      <p>Välkommen!</p>
+      <button id="logoutButton">Logga ut</button>
+    </div>
+
+  </main>
+  <script src="./script.js"></script>
 </body>
 </html>

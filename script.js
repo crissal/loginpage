@@ -25,7 +25,7 @@ function redirectToDesiredDiv(desiredDiv){
     }
 }
 
-//Om användaren är redan inloggad, då tar vi honom till 
+//Om användaren är redan inloggad, då tar vi honom till inloggad sidan
 if(isLoggedIn){
     redirectToDesiredDiv(divLoginSuccess);
 }

@@ -1,55 +1,57 @@
-const mainPlaceHolder = document.getElementById("mainPlaceHolder"),
-      divLogin = document.getElementById("divLogin"),
-      divLoginFailed = document.getElementById("divLoginFailed"),
-      divLoginSuccess = document.getElementById("divLoginSuccess");
+let mainPlaceHolder = document.getElementById("mainPlaceHolder"),
+    divLogin = document.getElementById("divLogin"),
+    divLoginFailed = document.getElementById("divLoginFailed"),
+    divLoginSuccess = document.getElementById("divLoginSuccess"),
+    loginButton = document.getElementById("loginButton"),
+    logoutButton = document.getElementById("logoutButton"),
+    retryButton = document.getElementById("retryButton"),
+    userNameInput = document.getElementById("usernameInput"),
+    passwordInput = document.getElementById("passwordInput");
 
-const loginButton = document.getElementById("loginButton"),
-      logoutButton = document.getElementById("logoutButton"),
-      retryButton = document.getElementById("retryButton"),
-      userNameInput = document.getElementById("usernameInput"),
-      passwordInput = document.getElementById("passwordInput");
-
-const correctName = "test",
-      correctPassword = "1234"
+const CORRECT_NAME = "test",
+      CORRECT_PASSWORD = "1234";
 
 let isLoggedIn = localStorage.getItem("isLoggedIn") == null ? false : true;
 
-function redirectDiv(desiredDiv){
+//Tömmer mainplaceholdern och sätter in önskad vy
+function redirectToDesiredDiv(desiredDiv){
     mainPlaceHolder.innerHTML = "";
     mainPlaceHolder.appendChild(desiredDiv);
 
+    //Om användaren hänvisas till inloggningssidan, tömms användarnamn och lösen fältet från det gamla värdet (ifall det finns)
     if(desiredDiv == divLogin){
         userNameInput.value = "";
         passwordInput.value = "";
     }
 }
 
+//Om användaren är redan inloggad, då tar vi honom till 
 if(isLoggedIn){
-    redirectDiv(divLoginSuccess);
+    redirectToDesiredDiv(divLoginSuccess);
 }
 else{
-    redirectDiv(divLogin);
+    redirectToDesiredDiv(divLogin);
 }
 
 loginButton.addEventListener("click", () => {
-    const userName = userNameInput.value;
-    const password = passwordInput.value;
+    let userName = userNameInput.value;
+    let password = passwordInput.value;
 
-    if(userName == correctName && password == correctPassword){
+    if(userName == CORRECT_NAME && password == CORRECT_PASSWORD){
         localStorage.setItem("isLoggedIn", true);
-        redirectDiv(divLoginSuccess);
+        redirectToDesiredDiv(divLoginSuccess);
     }
 
     else{
-        redirectDiv(divLoginFailed);
+        redirectToDesiredDiv(divLoginFailed);
     }
-});
+})
 
 logoutButton.addEventListener("click", () =>{
     localStorage.removeItem("isLoggedIn");
-    redirectDiv(divLogin);
+    redirectToDesiredDiv(divLogin);
 })
 
 retryButton.addEventListener("click", () => {
-    redirectDiv(divLogin);
+    redirectToDesiredDiv(divLogin);
 })
